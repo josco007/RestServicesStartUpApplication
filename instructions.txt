@@ -1,0 +1,62 @@
+open the project
+select restservice project and then right click
+select project properties
+go to java ee application 
+5.- change ee web application name for one what you want
+6.- change ee web context root for one what you want
+
+right click on EJBModel project 
+select project properties
+change RestServicesStartUp by one what you want 
+it should be somthing like this: 
+
+RestServicesStartUpApplication-EJBModel-webapp - before
+MyAppNameApplication-EJBModel-webapp - your change
+
+do this in both ee web application name and ee web context root
+
+
+on jdeveloper next to RestServiceStartUpApplication combo box in application tab on the left side
+you must find a down arrow 
+
+click on that down arrow and select rename application
+on file name replace RestServicesStartUpApplication.jws by MyAppName.jws
+
+on jdeveloper go to build ->clean all and refresh application
+
+close jdeveloper (if ask for save selected files, select all and click ok) and open it again (restart jadeveloper)
+if you want, change the folder name for your project from RestServicesStartUpApplication-master to myFolderName
+
+on jdeveloper click on open application and select your .jws file
+
+now be sure that your server is running.
+on jdeveloper go to Run->Start server instane (Integrated web logic server) wait until the server start.
+
+
+on jdeveloper go to Application->Deploy->new deployment profile
+on deployment profile name change application1 by a name that you want 
+click ok 
+on application assembly expand EJBModel.jpr and check EJBModel
+expand RESTService.jpr and check RESTWebApp
+click ok
+Again go to Application->Deploy and select your deployment 
+select Deploy to application server then click on next
+select IntegratedWebLogicServer and click on next
+select Deploy to selected instances in the domain radio button
+select defaultServer and click on next-> next-> finish
+
+the application should be intalled and ready for use it 
+
+for test the application on postman 
+
+the url should be somthing like this:
+
+http://localhost:7101/<ee web context root>/resources/<ee web application name>/getTest
+
+replacing <ee web context root> by the name that you did choose in the step number 6
+and <ee web application name> by the name that you did choose in the step number 5
+
+
+
+
+
