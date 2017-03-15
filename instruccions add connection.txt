@@ -1,0 +1,75 @@
+on application resources rigth clikc on Connections
+Select New
+On general select Connections
+On the rigth side select Database Connection
+click ok 
+
+fill the fields with your connections we will use the 
+default schema that comes with oracle HR
+
+conn name hr
+username hr
+password hr 
+
+click ok
+
+create the classes for our first  rest service connected to a database
+
+1.- expand EJBModel
+2.- rigth click on application sources
+3.- new entities from tables
+3.- next, next, next
+4.- on name filter write %DEPARTMENTS%
+5.- click on query
+5.- select departments and pass it to the right side
+6.- next,
+7.- change model by model.entities 
+8.- next, next, next, finish
+
+9.- select and right click to SessionEJBBean
+10.- edit session fecade
+11.- select public List<Departmets> getDep ....
+12.- click ok
+
+13.- expand RestService 
+14.- rigth click on service
+15.- new-> java class
+16.- name DepartmentsImpl
+18.- click ok
+19.- in this new class add these imports
+import javax.ejb.EJB;
+import model.facade.SessionEJBLocal;
+import model.entities.Departments;
+
+add between { and public Departments () these lines
+@EJB(beanName = "SessionEJB")
+SessionEJBLocal mySessionBean;
+
+after the constructor add this method:
+
+    public List<Departments>  getDepartmentsFindAll() {
+
+         return mySessionBean.getDepartmentsFindAll();
+
+    }
+
+20.- rigth clik on DepartmentsImpl.java
+21.- create restfull service
+21.5 .- on root path change service by departments 
+22.- on Configure http methods select type GET
+     prodices select application/json and application/xml
+     path = /list
+23.- next, on the return type warning click ok,
+      next, finish
+24.- before @Path("departments") add @Stateless
+     it should see somthing like this
+     @Stateless
+     @Path("departments")
+25.- add import import javax.ejb.Stateless;
+
+26 .- test the service 
+
+the url should be somthing like this
+localhost:7101/testAppContext/resources/departments/list
+
+
