@@ -51,10 +51,9 @@ for test the application on postman
 
 the url should be somthing like this:
 
-http://localhost:7101/<ee web context root>/resources/<ee web application name>/getTest
+http://localhost:7101/<ee web context root>/resources/test/getTest
 
 replacing <ee web context root> by the name that you did choose in the step number 6
-and <ee web application name> by the name that you did choose in the step number 5
 
 
 
